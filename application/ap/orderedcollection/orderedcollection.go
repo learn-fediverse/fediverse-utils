@@ -87,7 +87,6 @@ func Middleware[V any](route string, retriever OrderedCollectionRetriever[V]) fu
 				hh.Method("GET"),
 				hh.Route("/"),
 				hh.Condition(func(r hh.BarebonesRequest) bool {
-					fmt.Println("Condition to check query parameter")
 					return strings.TrimSpace(r.URL.Query().Get("page")) == ""
 				}),
 				hh.ConditionMust(func(r hh.BarebonesRequest) bool {
