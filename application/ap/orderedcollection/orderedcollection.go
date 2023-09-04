@@ -87,7 +87,7 @@ func Middleware[V any](route string, retriever OrderedCollectionRetriever[V]) fu
 				hh.Method("GET"),
 				hh.Route("/"),
 				hh.Condition(func(r hh.BarebonesRequest) bool {
-					return strings.TrimSpace(r.URL.Query().Get("page")) == ""
+					return strings.TrimSpace(r.URL.Query().Get("page")) != ""
 				}),
 				hh.ConditionMust(func(r hh.BarebonesRequest) bool {
 					return isNaturalNumber(r.URL.Query().Get("page"))
